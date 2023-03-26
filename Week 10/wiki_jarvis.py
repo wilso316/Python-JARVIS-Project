@@ -8,7 +8,7 @@
 # Install/import pytts3, wiki, speech recognition
 import speech_recognition as sr
 import pyttsx3
-import wikipedia
+import wikipedia_class
 
 # Create class Jarvis
 class Jarvis:
@@ -57,7 +57,12 @@ class Jarvis:
             except sr.RequestError as e:
                 # If there was an error communication with Google Speech
                 print(f"Google Speech did not responds: {e}")
-
+    
+    def wiki_search(self):
+        # Get self.query and use wikipedia class to search up term
+        wiki = wikipedia_class.WikipediaApp(self.query)
+        print(wiki)
+        self.engine.say(wiki)
 
     def greet_user(self):
         self.engine.say("Hello I am JARVIS. Your personal AI assistant.")
@@ -74,5 +79,5 @@ class Jarvis:
 jarvis = Jarvis()
 jarvis.greet_user()
 while True:
-    jarvis.take_user_input()
+    jarvis.user_input()
     jarvis.voice_commands()
