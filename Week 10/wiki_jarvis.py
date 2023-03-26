@@ -9,6 +9,7 @@
 import speech_recognition as sr
 import pyttsx3
 import wikipedia_class
+from time import sleep
 
 # Create class Jarvis
 class Jarvis:
@@ -60,11 +61,15 @@ class Jarvis:
     
     def wiki_search(self):
         # Get self.query and use wikipedia class to search up term
-        wiki = wikipedia_class.WikipediaApp(self.query)
-        print(wiki)
-        self.engine.say(wiki)
+        wiki = wikipedia_class.WikipediaApp()
+        # Call method to get_wiki_summary
+        summary = wiki.get_wikipedia(self.query)
+        print(summary)
+        self.engine.say(summary)
+        sleep(3)
 
     def greet_user(self):
+        print("Hello I am JARVIS. Your personal AI assistant.")
         self.engine.say("Hello I am JARVIS. Your personal AI assistant.")
         self.engine.runAndWait()
 
@@ -80,4 +85,5 @@ jarvis = Jarvis()
 jarvis.greet_user()
 while True:
     jarvis.user_input()
+    jarvis.wiki_search()
     jarvis.voice_commands()
