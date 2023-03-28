@@ -10,16 +10,16 @@
 import wikipedia
 
 class WikipediaApp:
-    def __init__(self, result):
-        self.__result = result
+    def __init__(self):
+        pass
 
-    def get_wikipedia(self):
+    def get_wikipedia(self, query):
         """
             Search Wikipedia
         """
         try:
             # Return a summary result of 3 sentences
-            self.__summary = wikipedia.summary(self.__result, sentences=3)
+            self.__summary = wikipedia.summary(query, sentences=3)
             return self.__summary
 
         except:

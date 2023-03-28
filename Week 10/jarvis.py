@@ -62,7 +62,7 @@ class Jarvis:
     
     def wiki_search(self):
         # Get self.query and use wikipedia class to search up term
-        wiki = wikipedia_class.WikipediaApp(self)
+        wiki = wikipedia_class.WikipediaApp()
         # Call method to get_wiki_summary
         summary = wiki.get_wikipedia(self.query)
         print(summary)
