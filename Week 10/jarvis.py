@@ -3,13 +3,13 @@
     Author: Maya Wilson
     Created: 3/21/23
     Purpose: Use wikipedia module to print infomation in OOP and use Text-to-Speech and Speech Recognition to print Wikipedia
-    This program uses wikipedia_class module
+    This uses it within the same module
 
 """
 # Install/import pytts3, wiki, speech recognition
 import speech_recognition as sr
 import pyttsx3
-import wikipedia_class
+import wikipedia
 from time import sleep
 
 # Create class Jarvis
@@ -60,25 +60,52 @@ class Jarvis:
                 # If there was an error communication with Google Speech
                 print(f"Google Speech did not responds: {e}")
     
-    def wiki_search(self):
-        # Get self.query and use wikipedia class to search up term
-        wiki = wikipedia_class.WikipediaApp()
-        # Call method to get_wiki_summary
-        summary = wiki.get_wikipedia(self.query)
-        print(summary)
-        self.engine.say(summary)
-        sleep(3)
+    def get_wikipedia(self):
+        """
+            Search Wikipedia
+        """
+        try:
+            print("Use Wikipedia")
+            print("What would you like to look up?")
+            self.engine.say("What would you like to look up?")
+            self.engine.runAndWait()
+
+            self.user_input()
+
+            # Return a summary result of 3 sentences
+            summary = wikipedia.summary(self.query, sentences=3)
+            print(f"\n{summary}")
+            self.engine.say(summary)
+            self.engine.runAndWait()
+            self.display_menu()
+
+        except:
+            # use raise for troubleshooting exceptions
+            # raise
+            # If there is an exception, allow the user to try again.
+            self.engine.say("Sorry, try a different search term.")
+            print("Try a different search term.")
+            self.display_menu()
+            self.engine.runAndWait()
+
+    def display_menu(self):
+        print("----- JARVIS Menu -----")
+        print("Please say a command: ")
+        print("Commands: Wikipedia | Quit")
 
     def greet_user(self):
         print("Hello I am JARVIS. Your personal AI assistant.")
         self.engine.say("Hello I am JARVIS. Your personal AI assistant.")
+        jarvis.display_menu()
         self.engine.runAndWait()
 
     def voice_commands(self):
         # If you say quit, the program will exit
-        if self.query == "quit":
+        if self.query.lower() == "quit":
             print("Goodbye!")
             exit()
+        elif self.query.lower() == "wikipedia":
+            self.get_wikipedia()
 
 # ----------------------------- MAIN PROGRAM -----------------------------------#
 # Create a jarvis program object
@@ -86,5 +113,4 @@ jarvis = Jarvis()
 jarvis.greet_user()
 while True:
     jarvis.user_input()
-    jarvis.wiki_search()
     jarvis.voice_commands()
