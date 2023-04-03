@@ -90,6 +90,24 @@ class Jarvis:
             self.display_menu()
             self.engine.runAndWait()
 
+    def detect_aliens(self):
+        # Detect aliens
+        self.engine.say("Detecting Aliens")
+        
+        # Print detecting 
+
+        sleep(.5)
+
+        # Print lifeform found
+
+        self.engine.say("Lifeform Found")
+
+        # Print alien description
+        self.engine.say("Description: ")
+
+        self.engine.runAndWait()
+
+
     def display_menu(self):
         print("----- JARVIS Menu -----")
         # Loop through list of commands
@@ -113,7 +131,7 @@ class Jarvis:
         elif self.query.lower() == "wikipedia":
             self.get_wikipedia()
         
-        elif self.query.lower() == "detect":
+        elif self.query.lower() == "detect aliens":
             self.detect_aliens()
 
 # ----------------------------- MAIN PROGRAM -----------------------------------#
