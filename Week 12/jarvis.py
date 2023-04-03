@@ -15,6 +15,8 @@ from time import sleep
 # Create class Jarvis
 class Jarvis:
     def __init__(self) -> None: 
+        # Create list of commands
+        self.commands = ["Wikipedia", "Detect Aliens", "Quit"]
         # Create SpeechRecognition recognizer object
         self.r = sr.Recognizer()
 
@@ -90,8 +92,12 @@ class Jarvis:
 
     def display_menu(self):
         print("----- JARVIS Menu -----")
+        # Loop through list of commands
+        for i in range(len(self.commands)):
+            print(f"{i + 1}. {self.commands[i]}")
         print("Please say a command: ")
-        print("Commands: Wikipedia | Quit")
+        
+       
 
     def greet_user(self):
         print("Hello I am JARVIS. Your personal AI assistant.")
@@ -106,6 +112,9 @@ class Jarvis:
             exit()
         elif self.query.lower() == "wikipedia":
             self.get_wikipedia()
+        
+        elif self.query.lower() == "detect":
+            self.detect_aliens()
 
 # ----------------------------- MAIN PROGRAM -----------------------------------#
 # Create a jarvis program object
