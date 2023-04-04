@@ -10,6 +10,7 @@
 import speech_recognition as sr
 import pyttsx3
 import wikipedia
+import alien_detect_class
 from time import sleep
 
 # Create class Jarvis
@@ -91,19 +92,37 @@ class Jarvis:
             self.engine.runAndWait()
 
     def detect_aliens(self):
+        detect_obj = alien_detect_class.Alien_Detect()
+
         # Detect aliens
         self.engine.say("Detecting Aliens")
         
         # Print detecting 
+        detect_obj.detecting()
 
-        sleep(.5)
-
-        # Print lifeform found
+        sleep(4)
 
         self.engine.say("Lifeform Found")
 
         # Print alien description
-        self.engine.say("Description: ")
+        print(f"{detect_obj.life_form1}")
+        self.engine.say(f"Description: {detect_obj.life_form1}")
+        self.engine.say("The Martian is an alien.")
+
+        # Detect aliens
+        self.engine.say("Detecting Aliens")
+        
+        # Print detecting 
+        detect_obj.detecting()
+
+        sleep(4)
+
+        self.engine.say("Lifeform Found")
+
+        # Print alien description
+        print(f"{detect_obj.life_form2}")
+        self.engine.say(f"Description: {detect_obj.life_form2}")
+        self.engine.say("The Jupitarian is an alien.")
 
         self.engine.runAndWait()
 

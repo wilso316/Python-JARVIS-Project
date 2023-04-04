@@ -22,18 +22,17 @@ class Alien_Detect:
         self.console.print("| . . . . . Detecting Aliens . . . . . |", style="bold blue")
         for x in track(range(100), description='[green]Detecting'):
             sleep(.04)
-        print(self.martian1)
-        print(f"Is a martian an alien? {self.martian1.detector()}")
-
-        self.console.print("| . . . . . Detecting Aliens . . . . . |", style="bold blue")
-        for x in track(range(100), description='[green]Detecting'):
-            sleep(.04)
 
         self.console.print("| . . . . . LIFEFORM FOUND . . . . . . |", style="bold green")
         sleep(2)
 
-        print(self.jupitarian1)
-        print(f"Is a jupitarian an alien? {self.jupitarian1.detector()}")
+    
+    def life_form1(self):
+        return self.martian1
+    
+    def life_form2(self):
+        return self.jupitarian1
+        
         
         
             
