@@ -106,7 +106,7 @@ class Jarvis:
         self.engine.runAndWait()
 
         # Print alien description
-        print(f"{detect_obj.life_form2()}")
+        print(f"{detect_obj.life_form1()}")
         self.engine.say(f"Description: {detect_obj.life_form1()}")
         self.engine.say("The Martian is an alien.")
         print("The Martian is an alien.")
@@ -126,8 +126,9 @@ class Jarvis:
         print(f"{detect_obj.life_form2()}")
         self.engine.say(f"Description: {detect_obj.life_form2()}")
         self.engine.say("The Jupitarian is an alien.")
-        print("The Martian is an alien.")
+        print("The Jupitarian is an alien.")
         self.engine.runAndWait()
+        jarvis.display_menu()
 
     def display_menu(self):
         print("----- JARVIS Menu -----")

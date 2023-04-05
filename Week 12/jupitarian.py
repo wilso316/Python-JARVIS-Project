@@ -18,7 +18,7 @@ class jupitarian(alien.Alien):
         self._fingers = fingers
 
     def __str__(self) -> str:
-        description = f"Alien is {self._color}, has {self._antennae} antennae and {self.arms} arms.\nThe jupitarian has {self._fingers} fingers."
+        description = f"Alien is {self._color}, has {self._antennae} antennae and {self.arms} arms.\nThe Jupitarian has {self._fingers} fingers."
         return description
     # Property based getter and setter
     @property

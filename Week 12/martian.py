@@ -19,7 +19,7 @@ class martian(alien.Alien):
 
         # Property based getter and setter
     def __str__(self) -> str:
-        description = f"Alien is {self._color}, has {self._antennae} antennae and {self.arms} arms.\nThe martian has {self._tongue} tongues."
+        description = f"Alien is {self._color}, has {self._antennae} antennae and {self.arms} arms.\nThe Martian has {self._tongue} tongues."
         return description
     @property
     def tongue(self):
